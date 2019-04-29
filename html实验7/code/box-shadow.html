@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+    <title>box shadow</title>
+    <style>
+        body {
+            background-color: seagreen;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        #box1 {
+            width: 15rem;
+            height: 5rem;
+            margin: 0 auto;
+            padding: 0.7rem;
+            background:linear-gradient(to right,rgba(240,240,240,1) 0%,white 10%,white 100%);
+            border-radius: 2%;
+            box-shadow: 
+                0px -1px 1px rgba(0,0,0,0.5) inset,
+                0px 1px 1px rgba(0,0,0,0.5),
+                0px 1px 1px white inset,
+                0px 0px 1px black;
+            box-sizing:border-box;
+            position: relative;
+        }
+
+        #box2 {
+            height: 100%;
+            width: 100%;
+            background: white;
+            box-shadow: 
+                0px 2px 1px rgba(0,0,0,0.5) inset,
+                0px 1px 5px rgba(0,0,0,0.1) inset;
+            box-sizing:border-box
+
+            
+        }
+
+        #box3 {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto;
+            padding: 0.3rem;
+            background: linear-gradient(to right,rgba(240,240,240,1) 0%,white 10%,white 100%);
+            border-radius: 100%;
+            box-shadow: 
+                0px -1px 1px rgba(0,0,0,0.5) inset,
+                0px 1px 2px rgba(0,0,0,0.5),
+                0px 1px 1px white inset,
+                0px 0px 1px black inset;
+            box-sizing:border-box;
+            position: relative;
+            left: 20%;
+            bottom: 80px;
+
+        }
+
+        #box4 {
+            height: 100%;
+            width: 100%;
+            border-radius: 100%;
+            background: linear-gradient(180deg,rgb(82, 207, 235),rgb(66, 162, 188));
+            box-shadow: 0px 1px 5px rgba(255,255,255,0.2) inset,
+            0px -2px 1px rgba(0,0,0,0.5) inset
+            ;
+            box-sizing:border-box
+        }
+        #box4:hover{
+            background: rgb(82,207,235);
+            transition: ease-out;
+            cursor:pointer;
+        }
+        #box4:active{
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.3) inset,0px 3px 4px rgba(0,0,0,0.3) inset;
+            background:rgb(82,207,235)
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+        </div>
+    </div>
+    <br>
+    <div id="box3">
+         <div id="box4">
+         </div>
+    </div>
+</body>
+</html>

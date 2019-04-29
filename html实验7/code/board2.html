@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>新闻板块</title>
+    <style>
+        div{float:inherit;}
+        * { margin: 0; padding: 0;  line-height: 1.2em; }
+        *, a:link, a:visited, a:hover, a:active { text-decoration: none; font-size: 12px; font-family: 宋体;  }
+        .clear { clear: both;  }
+
+        li {  list-style-type: none;  }
+        body{position: absolute;left: 40%;top: 30%;}
+        #board1 { width: 400px; margin:auto;background-color:whitesmoke;padding: 10px}
+        li span {float:right;}
+        .boardmenu { height: 18px;border-bottom: dotted #a17525;}
+        .boardmenu .title {width: 250px }
+        .boardmenu .title img {vertical-align: text-top}
+        .boardmenu .title span { color: #a17525; font-weight: bold; font-family: 黑体;}
+        .boardmenu .more {font-size: 1.1em;text-align: right;margin-top:-20px}
+        .boardmenu .more a { font-size: 13px;font-family: sans-serif;color: #a17525;;position: relative}
+        .boardcontent li { height: 26px; padding: 2px}
+        .boardcontent a { font-size: 12px; color: #6f6f6f;  }
+        .boardcontent li:before { content: url('images/list_icon.gif');}
+
+  </style>
+</head>
+<body>
+    <div id="board1" class="board">
+        <div class="boardmenu">
+            <div class="title">
+                <img src="images/boardmenu.gif"><span>新闻</span>
+            </div>
+            <div class="more"><a href="#">&#8250;&#8250;more</a></div>
+            <div class="clear"></div>
+        </div>
+        <ul class="boardcontent">
+            <li><a href="#">超越北上广！福州再次成为中国最宜居城市</a><span>06-11</span></li>
+            <li><a href="#">俄远东第一大城市：历史上曾属中国</a><span>07-21</span></li>
+            <li><a href="#">西湖边这片绿荫即将消失，恢复需50年？</a><span>08-06</span></li>
+            <li><a href="#">爱化妆的古埃及男人和史上第一次罢工</a><span>09-16</span></li>
+            <li><a href="#">中国不敢拍的教育痛点，都在这部印度片里</a><span>10-10</span></li>
+        </ul>
+    </div>
+</body>
+</html>
