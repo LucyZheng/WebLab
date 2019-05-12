@@ -1,0 +1,24 @@
+<!DOCTYPE  html>
+<html  lang="zh-cn">
+<head>
+<title>¼ÆËãÆ÷</title>
+<style>
+  input {width:5em}
+</style>
+<script>
+     function calc(){
+        var num1=document.getElementById("num1");
+        var num2=document.getElementById("num2");
+        var num3=document.getElementById("result");
+        num3.innerHTML=parseFloat(num2.value)+parseFloat(num1.value);
+     }
+</script>
+</head>
+<body>
+  <h1>¼ÆËãÆ÷</h1>
+  <p><input type="text" id="num1"> +  <input type="text" id="num2"> =  <span id="result">?</span></p>
+  <input type="button" onclick="calc()" value="¼ÆËã">
+  
+
+</body>
+</html>
