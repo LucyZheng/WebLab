@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AJAX-post</title>
   <style>
-    p {font-size:20px}
+    p {
+      font-size: 20px
+    }
   </style>
 </head>
+
 <body>
   <h1>Ajax-post</h1>
   <p>id£º<input id="t1" type="text"></p>
-  <p>ÐÕÃû£º<input id="t2" type="text"></p>
+  <p>ÐÕÃû£º<input id="t2" type="text" onblur="post()"></p>
   <p><span id="t4"></span></p>
   <script>
+    var xmlhttp = new XMLHttpRequest();
+    var t1 = document.getElementById("t1");
+    var t2 = document.getElementById("t2");
+    function post() {
+      xmlhttp.open("post", "http://172.18.187.9:8080/jsp/post.jsp", false);
+      xmlhttp.setRequestHeader("Content-Type",
+        "application/x-www-form-urlencoded");
+      xmlhttp.send("id="+encodeURIComponent(t1.value)+"&name="+encodeURIComponent(t2.value));
+      var t4 = document.getElementById("t4");
+      t4.innerHTML = xmlhttp.responseText;
+    }
   </script>
 </body>
+
 </html>

@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AJAX-get</title>
   <style>
-     p {font-size:20px}
-   </style>
+    p {
+      font-size: 20px
+    }
+  </style>
 </head>
+
 <body>
   <h1>Ajax-get</h1>
-  <p>id：<input id="t1" type="text"></p>
+  <p>id：<input id="t1" type="text" onblur="get()"></p>
   <p id="t2">[无]</p>
+
   <script>
+    var xmlhttp = new XMLHttpRequest();
+    var t1 = document.getElementById("t1");
+    var t2 = document.getElementById("t2");
+    function change() {
+      t2.innerHTML = "正在查询...";
+    }
+    function get() {
+      change();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+          alert(xmlhttp.responseText);
+          t2.innerHTML = (xmlhttp.responseText);
+        }
+      }
+      xmlhttp.open("get", "http://172.18.187.9:8080/jsp/get.jsp?id=" + t1.value, true);
+      xmlhttp.send(null);
+    }
   </script>
 </body>
+
 </html>

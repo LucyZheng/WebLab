@@ -13,7 +13,7 @@
  </div>
  <script type="text/javascript">
      var allImgs = "";
-     var imgPath="http://172.18.187.11:8080/imgs/";
+     var imgPath="imgs/";
      for (var i = 1; i < 60; i ++) {
          allImgs += '<div  class="list"><img xSrc="'+imgPath+ i + '.jpg"';
          allImgs += ' src="'+imgPath+'pixel.gif" width="200" height="250" ';
@@ -30,7 +30,10 @@
         if (!cnt)  return false;
         for (var i = 0; i < cnt; i++) {
    	   var o = docImg[i], imgHeight = 250;
-           //新编代码加在这里
+           var itop=docImg[i].getBoundingClientRect().top;
+           var ibottoom=docImg[i].getBoundingClientRect().bottom;
+           var hei=document.documentElement.clientHeight;
+           if (itop>0 && itop<hei || ibottoom>0 && ibottoom<hei) docImg[i].src=docImg[i].getAttribute("xSrc");
         };
      };
      window.onscroll = function() {

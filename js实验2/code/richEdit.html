@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rich Text Editing</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="editable" id="richedit" contenteditable="true"
+        style="padding:10px;width:400px;height:200px;border:solid 1px black">
+    </div><br>
+    <input type="button" value="斜体" onclick="italic()">
+    <input type="text" id="input1">
+    <input type="button" value="提交颜色"  onclick="setcolor()">
+    <input type="text" id="input2">
+    <input type="button" value="提交字号" onclick="size1()">
+    <input type="text" id="input3">
+    <input type="button" value="提交图像" onclick="image()">
+    <input type="text" id="input4">
+    <input type="button" value="提交链接" onclick="urls()">
+    <input type="button" value="撤销" onclick="del()">
+    <input type="button" value="代码" onclick="show()">
+</body>
+<script>
+    var input1=document.getElementById("input1");
+    var input2=document.getElementById("input2");
+    var input3=document.getElementById("input3");
+    var input4=document.getElementById("input4");
+    var var0,var1,var2,var3;
+    function italic() {
+        document.execCommand("italic", false, null);
+    }
+    function setcolor(){
+        var0=input1.value;
+        document.execCommand("forecolor",false,var0);
+        var0=null;
+    }
+    function size1(){
+        var1=parseInt(input2.value);
+        document.execCommand("fontsize",false,var1);
+        var1=null;
+    }
+    function image(){
+        var2=input3.value;
+        document.execCommand("insertimage",false,var2);
+        var2=null;
+    }
+    function urls(){
+        var3=input4.value;
+        document.execCommand("createlink",false,var3);
+        var3=null;
+
+    }
+    function del(){
+        document.execCommand("undo",false,false);
+    }
+    function show() {
+        var o = document.getElementById("richedit");
+        alert(o.innerHTML);
+    }
+
+</script>
+
+</html>
