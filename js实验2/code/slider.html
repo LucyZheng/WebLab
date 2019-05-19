@@ -1,10 +1,233 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Slider</title>
-<style>
-</style>
+    <title>Slider</title>
+    <style>
+        #imgs {
+            position: absolute;
+            height: 300px;
+            width: 20000px;
+        }
+
+        #allimg {
+            position: relative;
+            top: 100px;
+            left: 400px;
+            height: 300px;
+            width: 750px;
+            overflow: hidden;
+        }
+
+        #img1 {
+            width: 750px;
+            height: 300px;
+            float: left;
+        }
+
+        #img2 {
+            width: 750px;
+            height: 300px;
+            float: left;
+        }
+
+        #img3 {
+            width: 750px;
+            height: 300px;
+            float: left;
+        }
+
+        #point1 {
+            top: 390px;
+            left: 1060px;
+            height: 12px;
+            width: 13px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        #point2 {
+            top: 390px;
+            left: 1080px;
+            height: 12px;
+            width: 13px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        #point3 {
+            top: 390px;
+            left: 1100px;
+            height: 12px;
+            width: 13px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        #point11 {
+            position: absolute;
+        }
+
+        #point12 {
+            position: absolute;
+        }
+
+        #point13 {
+            position: absolute;
+        }
+
+        #arrowl {
+            height: 80px;
+            width: 33px;
+            position: absolute;
+            overflow: hidden;
+            top: 250px;
+            left: 410px;
+        }
+
+        #arrowr {
+            height: 80px;
+            width: 33px;
+            position: absolute;
+            overflow: hidden;
+            top: 250px;
+            left: 1120px;
+        }
+
+        #arrowright {
+            top: -80px;
+            position: relative;
+        }
+    </style>
 </head>
+
 <body>
+
+    <div id="allimg">
+        <div id="imgs">
+            <img id="img1" src="images/img1.jpg">
+            <img id="img2" src="images/img2.jpg">
+            <img id="img3" src="images/img3.jpg">
+            <img id="img1" src="images/img1.jpg">
+        </div>
+    </div>
+    <div id="point1"><img id="point11" src="images/navigator.png"></div>
+    <div id="point2"><img id="point12" src="images/navigator.png"></div>
+    <div id="point3"><img id="point13" src="images/navigator.png"></div>
+    <div id="arrowl"><img id="arrowleft" src="images/arrows-30.png"></div>
+    <div id="arrowr"><img id="arrowright" src="images/arrows-30.png"></div>
 </body>
+<script>
+    var time = 0;
+    var staytime = 0;
+    var ifstay = 1;
+    var point1 = document.getElementById("point11");
+    var point2 = document.getElementById("point12");
+    var point3 = document.getElementById("point13");
+    var arrowl = document.getElementById("arrowleft");
+    var arrowr = document.getElementById("arrowright");
+    var image = document.getElementById("imgs");
+    function slick() {
+        setTimeout(slick, 10);
+        if (time < -1500 && time >= -2250 || time == 0) {
+            point1.style.top = -24 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else if (time < 0 && time >= -750) {
+            point1.style.top = 0 + "px";
+            point2.style.top = -24 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else {
+            point1.style.top = 0 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = -24 + "px";
+
+        }
+        if (time != 0 && time != -750 && time != -1500 && time != -2250) time -= 5; else staytime += ifstay;
+        if (time == -2250) time = 0;//回到第一张图片
+        image.style.left = time + "px";
+        if (staytime == 150) {
+            time -= 5;
+            staytime = 0;
+        }
+    }
+    slick();
+    arrowl.style.visibility = "hidden";
+    arrowr.style.visibility = "hidden";
+    arrowl.onclick = function () {
+        if (time == 0) time = -2250;
+        time = time + 750;
+        if (time < -1500 && time >= -2250 || time == 0) {
+            point1.style.top = -24 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else if (time < 0 && time >= -750) {
+            point1.style.top = 0 + "px";
+            point2.style.top = -24 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else {
+            point1.style.top = 0 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = -24 + "px";
+        }
+        if (time == -2250) time = 0;
+    };
+    arrowr.onclick = function () {
+        time = time - 750;
+        if (time < -1500 && time >= -2250 || time == 0) {
+            point1.style.top = -24 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else if (time < 0 && time >= -750) {
+            point1.style.top = 0 + "px";
+            point2.style.top = -24 + "px";
+            point3.style.top = 0 + "px";
+        }
+        else {
+            point1.style.top = 0 + "px";
+            point2.style.top = 0 + "px";
+            point3.style.top = -24 + "px";
+
+        }
+        if (time == -2250) time = 0;
+    };
+    point1.onclick = function () {
+        point1.style.top = -24 + "px";
+        point2.style.top = 0 + "px";
+        point3.style.top = 0 + "px";
+        time = 0;
+    }
+    point2.onclick = function () {
+        point1.style.top = 0 + "px";
+        point2.style.top = -24 + "px";
+        point3.style.top = 0 + "px";
+        time = -750;
+    }
+    point3.onclick = function () {
+        point1.style.top = 0 + "px";
+        point2.style.top = 0 + "px";
+        point3.style.top = -24 + "px";
+        time = -1500;
+    }
+    var hander = function (event) {
+        ifstay = !ifstay;
+        switch (event.type) {
+            case "mouseover":
+                arrowl.style.visibility = "visible";
+                arrowr.style.visibility = "visible";
+                break;
+            case "mouseout":
+                arrowl.style.visibility = "hidden";
+                arrowr.style.visibility = "hidden";
+                break;
+        }
+    };
+    image.onmouseover = image.onmouseout = arrowl.onmouseover = arrowl.onmouseout = arrowr.onmouseover = arrowr.onmouseout = hander;
+    point1.onmouseover = point1.onmouseout = point2.onmouseover = point2.onmouseout = point3.onmouseover = point3.onmouseout = hander;
+</script>
 </html>
