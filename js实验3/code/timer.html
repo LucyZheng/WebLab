@@ -1,0 +1,93 @@
+<!DOCTYPE  html>
+<html  lang="zh-cn">
+<head>
+<title>计时器</title>
+  <style> 
+     .time {display:inline-block;width:3.6em;text-align:right;margin-right:4px}
+     #container,h1 {width:20em;margin:10px auto;text-align:center}
+     .timer {margin-top:20px}
+     .startpressed {background:yellow};     
+  </style>
+  <script>
+      var count=1;
+      var time=0;
+      var ifstart=false;
+      var t1;
+      var timestring="time1";
+      function addTimer(){
+        var sourceNode = document.getElementById("timer0");
+        var clonedNode = sourceNode.cloneNode(true); 
+        clonedNode.setAttribute("id", "timer" + count); 
+        clonedNode.style.display="block";
+        clonedNode.childNodes[0].setAttribute("id","time"+count);
+        sourceNode.parentNode.appendChild(clonedNode); 
+        count+=1;
+        var i=count-1;
+        var startbutton=document.getElementsByClassName("startpressed");
+        var pausebutton=document.getElementsByName("pause");
+        var stopbutton=document.getElementsByName("stop");
+          (function (ind) {
+            startbutton[ind].addEventListener("click", function () {  timestring="time"+ind;start();})
+          })(i);
+          (function (ind2) {
+            stopbutton[ind2].addEventListener("click", function () {  timestring="time"+ind2;stop(); })
+          })(i);
+          (function (ind3) {
+            pausebutton[ind3].addEventListener("click", function () { timestring="time"+ind3; pause(); })
+          })(i);
+        
+      }
+      function timepause(){}
+      timepause.prototype.act=function(){
+        ifstart = false;
+      }
+      function pause(){
+        var pause1=new timepause;
+        pause1.act();
+        starttime(ifstart);
+      }
+      function stop(){
+        var pause2=new timepause;
+        pause2.act();
+        time=0;
+        document.getElementById(timestring).innerHTML = time.toFixed(2);
+        starttime(ifstart);
+      }
+      function start(){
+        if(!ifstart){
+            ifstart = true;
+            starttime(ifstart)
+        }
+        else{
+          time=0;
+        }
+        
+      }
+      function starttime(ifstart){
+        if(ifstart){
+        
+            time = time + 0.01; 
+			      document.getElementById(timestring).innerHTML = time.toFixed(2);
+            t1 = setTimeout("starttime(ifstart)",10); 
+        }
+		    else {
+            setTimeout("document.getElementById("+timestring+").value=time",0);
+            clearTimeout(t1);
+        }  
+      }
+      
+  </script>
+</head>
+<body>
+  <h1>计时器</h1>
+  <div id="container">
+     <input type="button" class="add" value="增加定时器" onclick="addTimer()">
+     <div class="timer s0" style="display: none" id="timer0"><span class="time" id="time0">0.00</span>
+          <input type="button" class="startpressed" value="启动" >
+          <input type="button" name="stop" value="停止"   >
+          <input type="button" name="pause" value="暂停" >
+     </div>
+  </div>
+
+</body>
+</html>
